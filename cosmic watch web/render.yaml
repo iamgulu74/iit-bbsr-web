@@ -1,8 +1,7 @@
 services:
-  # Backend Web Service
   - type: web
     name: cosmic-watch-api
-    env: docker
+    runtime: docker
     plan: free
     rootDir: backend
     envVars:
@@ -11,26 +10,21 @@ services:
       - key: PORT
         value: 5000
       - key: MONGODB_URI
-        sync: false # User will provide this in Render dashboard
+        sync: false
       - key: JWT_SECRET
         generateValue: true
       - key: NASA_API_KEY
-        sync: false # User will provide this
+        sync: false
       - key: FRONTEND_URL
         fromService:
           name: cosmic-watch-ui
           type: static_site
           property: url
 
-  # Frontend Static Site
   - type: static_site
     name: cosmic-watch-ui
-    env: static
+    runtime: static
     plan: free
-    # Adjust this if you want to deploy 'frontend-new' instead
     rootDir: frontend
-    publishDir: .
-    headers:
-      - path: /*
-        name: Access-Control-Allow-Origin
-        value: "*"
+    buildCommand: npm install && npm run build
+    publishDir: dist
