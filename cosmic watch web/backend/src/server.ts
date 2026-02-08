@@ -52,6 +52,10 @@ import chatRoutes from './routes/chat.routes';
 import userRoutes from './routes/user.routes';
 
 // Routes
+app.get('/api/v1', (req, res) => {
+    res.json({ status: 'success', message: 'Cosmic Watch API v1 is active' });
+});
+
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/asteroids', asteroidRoutes);

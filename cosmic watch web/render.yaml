@@ -1,12 +1,11 @@
 services:
+  # Backend API
   - type: web
     name: cosmic-watch-api
-    runtime: docker
+    env: docker
     plan: free
     rootDir: backend
     envVars:
-      - key: NODE_ENV
-        value: production
       - key: PORT
         value: 5000
       - key: MONGODB_URI
@@ -21,9 +20,9 @@ services:
           type: static_site
           property: url
 
+  # Frontend
   - type: static_site
     name: cosmic-watch-ui
-    runtime: static
     plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
