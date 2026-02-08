@@ -22,7 +22,7 @@ services:
       - backend-node-modules:/app/node_modules
 
   frontend:
-    build: ./frontend
+    build: ./frontend-new
     ports:
       - "8080:80"
     depends_on:

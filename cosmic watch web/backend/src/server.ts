@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
@@ -16,7 +16,9 @@ const io = new SocketIOServer(httpServer, {
             process.env.FRONTEND_URL || 'http://localhost:8080',
             'http://localhost:3000',
             'http://localhost:8080',
-            'http://127.0.0.1:8080'
+            'http://127.0.0.1:8080',
+            'http://localhost',
+            'http://127.0.0.1'
         ],
         methods: ['GET', 'POST'],
         credentials: true
@@ -50,13 +52,17 @@ import chatRoutes from './routes/chat.routes';
 import userRoutes from './routes/user.routes';
 
 // Routes
+app.get('/api/v1', (req: Request, res: Response) => {
+    res.json({ status: 'success', message: 'Cosmic Watch API v1 is active' });
+});
+
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/asteroids', asteroidRoutes);
 app.use('/api/v1/watchlist', watchlistRoutes);
 app.use('/api/v1/notifications', notificationRoutes);
 app.use('/api/v1/chat', chatRoutes);
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
     res.send('Cosmic Watch API is running');
 });
 
