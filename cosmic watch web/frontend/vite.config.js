@@ -3,8 +3,6 @@ import { resolve } from 'path';
 
 export default defineConfig({
     root: './',
-    base: './',
-    publicDir: 'public', // Usually Vite projects have a public dir
     build: {
         outDir: 'dist',
         rollupOptions: {
