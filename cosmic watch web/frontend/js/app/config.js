@@ -2,7 +2,7 @@
 // Auto-detect if running in production or locally
 const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? `http://${window.location.hostname}:5000/api/v1`
-    : `https://cosmic-watch-backend.onrender.com/api/v1`; // Replace with your actual Render backend URL
+    : `https://webcosmic1.onrender.com`; // Replace with your actual Render backend URL
 
 const config = {
     apiUrl: API_BASE_URL,
