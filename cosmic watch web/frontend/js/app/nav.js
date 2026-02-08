@@ -9,7 +9,7 @@ function renderNav() {
     navContainer.innerHTML = `
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top navbar-glass">
             <div class="container-fluid px-lg-5">
-                <a class="navbar-brand fw-bold d-flex align-items-center" href="${isAuth ? 'dashboard.html' : 'index.html'}">
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="${isAuth ? '/dashboard.html' : '/index.html'}">
                     <i class="fas fa-meteor me-2 text-info fa-lg"></i>
                     <span class="bg-gradient-primary">Cosmic Watch</span>
                 </a>
@@ -20,27 +20,27 @@ function renderNav() {
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                         ${isAuth ? `
                             <li class="nav-item mx-2">
-                                <a class="nav-link px-3" href="dashboard.html">
+                                <a class="nav-link px-3" href="/dashboard.html">
                                     <i class="fas fa-tachometer-alt me-2 text-primary"></i>Dashboard
                                 </a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="nav-link px-3" href="asteroids.html">
+                                <a class="nav-link px-3" href="/asteroids.html">
                                     <i class="fas fa-satellite-dish me-2 text-success"></i>Feed
                                 </a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="nav-link px-3" href="watchlist.html">
+                                <a class="nav-link px-3" href="/watchlist.html">
                                     <i class="fas fa-star me-2 text-warning"></i>Watchlist
                                 </a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="nav-link px-3" href="orbit.html">
+                                <a class="nav-link px-3" href="/orbit.html">
                                     <i class="fas fa-globe-americas me-2 text-info"></i>3D Orbit
                                 </a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="nav-link px-3" href="chat.html">
+                                <a class="nav-link px-3" href="/chat.html">
                                     <i class="fas fa-comments me-2 text-primary"></i>CommChat
                                 </a>
                             </li>
@@ -49,7 +49,7 @@ function renderNav() {
                                     <i class="fas fa-user-astronaut me-2"></i>${user?.username || 'User'}
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end bg-dark border border-secondary shadow-lg mt-2">
-                                    <li><a class="dropdown-item text-white py-2" href="profile.html">
+                                    <li><a class="dropdown-item text-white py-2" href="/profile.html">
                                         <i class="fas fa-id-card me-2 text-warning"></i>Profile
                                     </a></li>
                                     <li><hr class="dropdown-divider bg-white opacity-25"></li>
@@ -60,13 +60,13 @@ function renderNav() {
                             </li>
                         ` : `
                             <li class="nav-item mx-2">
-                                <a class="nav-link px-4 fw-bold" href="index.html">Home</a>
+                                <a class="nav-link px-4 fw-bold" href="/index.html">Home</a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="nav-link px-4 fw-bold" href="login.html">Login</a>
+                                <a class="nav-link px-4 fw-bold" href="/login.html">Login</a>
                             </li>
                             <li class="nav-item mx-2">
-                                <a class="btn btn-primary px-4 rounded-pill fw-bold shadow-4" href="register.html">Get Started</a>
+                                <a class="btn btn-primary px-4 rounded-pill fw-bold shadow-4" href="/register.html">Get Started</a>
                             </li>
                         `}
                     </ul>
