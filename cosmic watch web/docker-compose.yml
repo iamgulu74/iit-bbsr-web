@@ -1,0 +1,53 @@
+services:
+  backend:
+    build: ./backend
+    command: npm run dev
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongo:27017/cosmicwatch
+      - JWT_SECRET=dev_secret_key_change_in_prod
+      - NODE_ENV=development
+      - NASA_API_KEY=XbjoJg5LFEzq672Akezwz51jvO6dupsXXP9BHJMa
+      - FRONTEND_URL=http://localhost:8080
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/package.json:/app/package.json
+      - ./backend/tsconfig.json:/app/tsconfig.json
+      - backend-node-modules:/app/node_modules
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+  backend-node-modules:
