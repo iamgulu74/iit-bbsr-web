@@ -24,6 +24,6 @@ services:
   - type: static_site
     name: cosmic-watch-ui
     plan: free
-    rootDir: frontend
+    rootDir: frontend-new
     buildCommand: npm install && npm run build
     publishDir: dist
