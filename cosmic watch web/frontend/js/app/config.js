@@ -1,6 +1,13 @@
 // API Configuration
-// Auto-detect if running in Docker or locally
-const API_BASE_URL = `http://${window.location.hostname}:5000/api/v1`;
+// Auto-detect if running in Docker, locally, or on Render
+const isProduction = window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1';
+
+// If in production or requested by user, use the Render backend URL
+const RENDER_BACKEND_URL = 'https://cosmicwatch-nctg.onrender.com/api/v1';
+
+const API_BASE_URL = isProduction
+    ? RENDER_BACKEND_URL
+    : RENDER_BACKEND_URL; // Using Render URL even for local dev as requested
 
 const config = {
     apiUrl: API_BASE_URL,
